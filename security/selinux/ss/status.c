@@ -57,7 +57,7 @@ struct page *selinux_kernel_status_page(void)
 			status = page_address(selinux_status_page);
 
 			status->version = SELINUX_KERNEL_STATUS_VERSION;
-#if defined(CONFIG_SECURITY_SELINUX_ALWAYS_ENFORCE)
+#ifdef CONFIG_SECURITY_SELINUX_ALWAYS_ENFORCE
 			status->enforcing = 1;
 #elif defined(CONFIG_SECURITY_SELINUX_NEVER_ENFORCE)
 			status->enforcing = 0;

@@ -130,6 +130,8 @@ static int __init selinux_enabled_setup(char *str)
 	if (!kstrtoul(str, 0, &enabled))
 #ifdef CONFIG_SECURITY_SELINUX_ALWAYS_ENFORCE
 		selinux_enabled = 1;
+#elif defined(CONFIG_SECURITY_SELINUX_NEVER_ENFORCE)
+		selinux_enabled = 0;
 #else
 		selinux_enabled = enabled ? 1 : 0;
 #endif
